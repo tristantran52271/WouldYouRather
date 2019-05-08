@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Would You Rather</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+	<!--MAIN PAGE-->
+	<div class="pages" id="mainPage">
+		<div class="split left">
+			<div class="centered">
+				<h1>Would You Rather?</h1>
+			</div>
+		</div>
+		<div class="split right">
+			<div class="centered">
+				<button>Play</button>
+				<button onclick="goToPage(loginPage)">Login</button>
+				<button onclick="goToPage(createAccountPage)">Create Account</button>
+			</div>
+		</div>
+	</div>
+	<!--LOGIN PAGE-->
+	<div class="pages" id="loginPage">
+		<div class="split left">
+			<div class="centered">
+				<h2>Login</h2>
+				<button onclick="goToPage(mainPage)">Back</button>
+			</div>
+		</div>
+		<div class="split right">
+			<div class="centered">
+				<br>
+				<button>Login</button>
+				<br>
+				<br>
+				<button onclick="goToPage(createAccountPage)">Create Account</button>
+			</div>
+		</div>
+	</div>
+
+	<!--CREATE ACCOUNT PAGE-->
+	<div class="pages" id="createAccountPage">
+		<div class="split left">
+			<div class="centered">
+				<h2>Create Account</h2>
+				<button onclick="goToPage(mainPage)">Back</button>
+			</div>
+		</div>
+		<div class="split right">
+			<div class="centered">
+				<br>
+				<button>Create Account</button>
+			</div>
+		</div>
+	</div>
+
+	<script src="main.js"></script>
+
+</body>
+
+</html>
