@@ -20,6 +20,7 @@ body{
 }
 
 .right{
+	padding-top: 2vw;
 	right: 0%;
 	background-color: white;
 	align-content: center;
@@ -27,23 +28,31 @@ body{
 
 .right button{
 	margin-left: 4vw;
-	margin-top: 6vh;
-	height: 22vh;
+	margin-top: 3vw;
+	height: 20vw;
 	width: 33vw;
 
 	max-height: 140px;
 	max-width: 280px;
 
 	text-align: center;
+	color: white;
+	background-color: rgb(0, 122, 237);
+	font-size: 3.5vw;
 }
 
 .left button{
 	margin-top: 50px;
 
-	height: 22vh;
+	height: 20vw;
 	width: 33vw;
 	max-height: 140px;
 	max-width: 280px;
+	
+	color: white;
+	background-color: rgb(245, 100, 118);
+	
+	font-size: 3.5vw;
 }
 
 h1{
@@ -51,7 +60,7 @@ h1{
 }
 
 .left h2{
-	font-size: 6vw;
+	font-size: 5.5vw;
 	margin-bottom: 5%;
 }
 
@@ -62,7 +71,16 @@ h1{
 }
 
 .left input{
-	margin-top: -10%;
+	margin-top: 0%;
+	font-size: 2vw;
+
+	width: 40vw; 
+	height: 2.5vw;
+}
+
+.left p {
+	font-size: 2vw;
+	color: rgb(245, 100, 118);
 }
 
 .centered{
