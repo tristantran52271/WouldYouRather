@@ -1,4 +1,4 @@
-goToPage(mainPage);
+goToPage(menuPage);
 
 function goToPage(pageNumber) {
 	//hides all pages with a class of pages
