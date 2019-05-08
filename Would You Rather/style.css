@@ -15,23 +15,59 @@ body{
 }
 
 .left{
-	left: 0;
+	left: 0%;
 	background-color: rgb(55, 63, 81);
 }
 
 .right{
 	right: 0%;
 	background-color: white;
+	align-content: center;
 }
 
-button{
-	height: 50%;
-	width: 60%;
+.right button{
+	margin-left: 4vw;
+	margin-top: 6vh;
+	height: 22vh;
+	width: 33vw;
+
+	max-height: 140px;
+	max-width: 280px;
+
+	text-align: center;
+}
+
+.left button{
+	margin-top: 50px;
+
+	height: 22vh;
+	width: 33vw;
+	max-height: 140px;
+	max-width: 280px;
+}
+
+h1{
+	font-size: 7vw;
+}
+
+.left h2{
+	font-size: 6vw;
+	margin-bottom: 5%;
+}
+
+.left h5{
+	font-size: 4vw;
+	margin-top: 5%;
+	margin-bottom: 2%;
+}
+
+.left input{
+	margin-top: -10%;
 }
 
 .centered{
 	margin-top: 0%;
+	margin-left: 2vw;
 	padding-top: 0%;
-	margin-left: 6%;
-	font-size: 4vw;
+	align-content: center;
 }
