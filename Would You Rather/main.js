@@ -1,4 +1,4 @@
-goToPage(menuPage);
+goToPage(answerQuestionsPage);
 
 function goToPage(pageNumber) {
 	//hides all pages with a class of pages

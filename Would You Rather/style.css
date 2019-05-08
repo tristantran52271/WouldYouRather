@@ -1,6 +1,7 @@
 body{
 	font-family: Arial, Helvetica, sans-serif;
 	color: white;
+	background-color: rgb(55, 63, 81);
 	margin: 0;
 	margin-top: 0;
 }
@@ -104,4 +105,65 @@ h1{
 	margin-left: 2vw;
 	padding-top: 0%;
 	align-content: center;
+}
+
+
+#answerQuestionsPage h2{
+	text-align: center;
+	font-size: 5.5vw;
+}
+
+#answerQuestionsPage p{
+	display: inline;
+	font-size: 2vw;
+
+	margin-left: 2.5vw;
+	margin-right: 2.5vw;
+}
+
+#answerQuestionsPage .options{
+	text-align: center;
+}
+
+#answerQuestionsPage .options button{
+	height: 19vw;
+	width: 32vw;
+	font-size: 3.5vw;
+}
+
+.options #option1{
+	background-color: rgb(0, 122, 237);
+	box-shadow: 7px 7px rgb(0, 101, 196);
+}
+
+.options #option2{
+	background-color: rgb(245, 100, 118);
+	box-shadow: 7px 7px rgb(228, 63, 111);
+}
+
+#answerQuestionsPage .navigation button{
+	height: 5vw;
+	width: 12vw;
+	font-size: 3.5vw;
+}
+
+#answerQuestionsPage h6{
+	display: inline;
+
+	margin-left: 25vw;
+	margin-right: 24vw;
+}
+
+
+#answerQuestionsPage .navigation{
+	margin-top: 5.5vw;
+	text-align: center;
+}
+
+.navigation #back{
+	left: 0%;
+}
+
+.navigation #next{
+	right: 0%;
 }
