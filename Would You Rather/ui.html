@@ -57,9 +57,9 @@
 			<div class="centered">
 				<h2>Create Account</h2>
 				<h5>Username</h5>
-				<input type="text">
+				<input type="text" id="createAccountUsernameInput">
 				<h5>Password</h5>
-				<input type="password">
+				<input type="password" id="createAccountPasswordInput">
 				<br>
 				<button onclick="goToPage(menuPage)">Back</button>
 				<p>Username already exist</p>
@@ -69,7 +69,7 @@
 			<!--CONENT IN LEFT COLUMN-->
 			<div class="centered">
 				<br>
-				<button>Create Account</button>
+				<button onclick="createAccount()">Create Account</button>
 			</div>
 		</div>
 	</div>
@@ -96,18 +96,42 @@
 
 	<!--ANSWER QUESTIONS PAGE PAGE-->
 	<div class="pages" id="answerQuestionsPage">
-		<h2>Would You Rather...</h2>
-		<div class="options">
-			<button id="option1">Option 1</button>
-			<p>OR</p>
-			<button id="option2">Option 2</button>
-		</div>
-		<div class="navigation">
-			<button id="back">Back</button>
-			<h6></h6>
-			<button id="next">Next</button>
+		<div>
+			<h2>Would You Rather...</h2>
+			<div class="options">
+				<button id="option1">Option 1</button>
+				<p>OR</p>
+				<button id="option2">Option 2</button>
+			</div>
+			<div class="navigation">
+				<button id="back">Back</button>
+				<h6></h6>
+				<button id="next">Next</button>
+			</div>
 		</div>
 	</div>
+
+	<!-- The core Firebase JS SDK is always required and must be listed first -->
+	<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-database.js"></script>
+
+	<!-- TODO: Add SDKs for Firebase products that you want to use
+	     https://firebase.google.com/docs/web/setup#config-web-app -->
+
+	<script>
+		// Your web app's Firebase configuration
+		var firebaseConfig = {
+			apiKey: "AIzaSyD5hIysnsorWqc_18kyZDNt53hMVP40pHI",
+			authDomain: "would-you-rather-94622.firebaseapp.com",
+			databaseURL: "https://would-you-rather-94622.firebaseio.com",
+			projectId: "would-you-rather-94622",
+			storageBucket: "would-you-rather-94622.appspot.com",
+			messagingSenderId: "66976089355",
+			appId: "1:66976089355:web:3ae652f61f3839a9"
+		};
+		// Initialize Firebase
+		firebase.initializeApp(firebaseConfig);
+	</script>
 
 	<script src="main.js"></script>
 
