@@ -33,9 +33,9 @@
 			<div class="centered">
 				<h2>Login</h2>
 				<h5>Username</h5>
-				<input type="text">
+				<input type="text" id="loginUsernameInput">
 				<h5>Password</h5>
-				<input type="password">
+				<input type="password" id="loginPasswordInput">
 				<br>
 				<button onclick="goToPage(menuPage)">Back</button>
 				<p>This account does not exist</p>
@@ -44,7 +44,7 @@
 		<div class="split right">
 			<!--CONENT IN LEFT COLUMN-->
 			<div class="centered">
-				<button>Login</button>
+				<button onclick="login()">Login</button>
 				<button onclick="goToPage(createAccountPage)">Create Account</button>
 			</div>
 		</div>

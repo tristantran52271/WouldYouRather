@@ -8,7 +8,7 @@ body{
 
 .split{
 	height:100%;
-	width: 47%;
+	width: 50%;
 	position: fixed;
 	z-index: 1;
 	top: 0;
@@ -28,11 +28,11 @@ body{
 }
 
 .right button{
-	margin-left: 4vw;
-	margin-top: 3vw;
-	height: 19vw;
+	margin-left: 5vw;
+	margin-top: 2.5vw;
+	
+	height: 18vw;
 	width: 32vw;
-
 	max-height: 140px;
 	max-width: 280px;
 
@@ -47,7 +47,7 @@ body{
 .left button{
 	margin-top: 50px;
 
-	height: 19vw;
+	height: 18vw;
 	width: 32vw;
 	max-height: 140px;
 	max-width: 280px;
@@ -60,7 +60,7 @@ body{
 }
 
 h1{
-	font-size: 7vw;
+	font-size: 6.5vw;
 }
 
 .left h2{
@@ -69,14 +69,14 @@ h1{
 }
 
 .left h5{
-	font-size: 4vw;
+	font-size: 3.5vw;
 	margin-top: 5%;
 	margin-bottom: 2%;
 }
 
 .left h6{
 	display: inline;
-	font-size: 2.75vw;
+	font-size: 2.5vw;
 }
 
 .left input{
@@ -102,7 +102,7 @@ h1{
 
 .centered{
 	margin-top: 0%;
-	margin-left: 2vw;
+	margin-left: 3vw;
 	padding-top: 0%;
 	align-content: center;
 }
