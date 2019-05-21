@@ -13,13 +13,14 @@
 			<!--CONENT IN LEFT COLUMN-->
 			<div class="centered">
 				<h1>Would You Rather?</h1>
-				<p>Currently not logged in</p>
+				<h6>User: </h6>
+				<p id="menuUsername">Currently not logged in</p>
 			</div>
 		</div>
 		<div class="split right">
 			<!--CONENT IN RIGHT COLUMN-->
 			<div class="centered">
-				<button onclick="goToPage(loggedInMenuPage)">Play</button>
+				<button onclick="goToLoggedInMenu()">Play</button>
 				<button onclick="goToPage(loginPage)">Login</button>
 				<button onclick="goToPage(createAccountPage)">Create Account</button>
 			</div>
@@ -38,6 +39,8 @@
 				<input type="password" id="loginPasswordInput">
 				<br>
 				<button onclick="goToPage(menuPage)">Back</button>
+				<br>
+				<br>
 				<p id="loginErrorText">This account does not exist</p>
 			</div>
 		</div>
@@ -62,6 +65,8 @@
 				<input type="password" id="createAccountPasswordInput">
 				<br>
 				<button onclick="goToPage(menuPage)">Back</button>
+				<br>
+				<br>
 				<p id="createAccountErrorText">Username already exist</p>
 			</div>
 		</div>

@@ -90,9 +90,16 @@ h1{
 }
 
 .left p{
+	display: inline;
 	margin-top: 3vw;
-	font-size: 2vw;
+	font-size: 2.5vw;
 	color: rgb(245, 100, 118);
+}
+
+
+.left #menuUsername{
+	display: inline;
+	color: white;
 }
 
 .left #username{

@@ -6,6 +6,9 @@ let userArrayRef = database.ref('/userArray');
 
 userArrayRef.once('value').then(reload);
 
+var isLoggedIn = false;
+let loggedUsername = "";
+
 function reload(data) {
 	//If there is no data in the online databse, it creates an array
 	if (userArray == null) userArray = [];
@@ -15,7 +18,6 @@ function reload(data) {
 	userArrayRef.update(userArray);
 	console.log(data.val());
 }
-//userArrayRef.update(userArray);
 
 function createAccount() {
 	// Grabs the values from the HTML inputs
@@ -52,13 +54,15 @@ function createAccount() {
 	for (i = 0; i < userArray.length; i++) {
 		if (userArray[i][0] === createAccountUsernameInput) {
 			console.log("Username already exist!");
-			createAccountErrorText.innerHTML = "Username already exist";
+			createAccountErrorText.innerHTML = "Username already exists";
 			return;
 		}
 	}
 
 	userArray.push([createAccountUsernameInput, createAcconutPasswordInput]);
 	userArrayRef.update(userArray);
+
+	goToPage(menuPage);
 }
 
 function login() {
@@ -80,16 +84,29 @@ function login() {
 	// Checks the user database
 	for (i = 0; i < userArray.length; i++) {
 		// If the inputted username/password matches with a username/password on firebase 
-		if (userArray[i][0] === loginUsernameInput && userArray[i][1] === loginPasswordInput) {
+		if ((userArray[i][0] === loginUsernameInput) && (userArray[i][1] === loginPasswordInput)) {
 			// Login
 			console.log("LOGIN!");
+			isLoggedIn = true;
+			loggedUsername = userArray[i][0];
+			goToPage(menuPage);
+			console.log(isLoggedIn + ", logged in as " + loggedUsername);
+			document.getElementById("menuUsername").innerHTML = loggedUsername;
 			break;
-		} else {
+		} else if (i === userArray.length) {
 			// Otherwise, the user does not have an account
-			console.log("Account does not exist!")
-			loginErrorText.innerHTML = "Account does not exist";
+			loginErrorText.innerHTML = "Incorrect username or password";
 			return;
+		} else {
+			loginErrorText.innerHTML = "Incorrect username or password";
 		}
+	}
+}
+
+function goToLoggedInMenu() {
+	if (isLoggedIn === false) {
+		alert("Please Log In");
+		return;
 	}
 	goToPage(loggedInMenuPage);
 }
@@ -97,6 +114,12 @@ function login() {
 function goToPage(pageNumber) {
 	// hides all pages with a class of 'pages'
 	document.querySelectorAll('.pages').forEach((e) => e.hidden = true);
+
+	if (pageNumber === loggedInMenuPage) {
+		console.log(document.getElementById("username").innerHTML);
+		document.getElementById("username").innerHTML = loggedUsername;
+		console.log(document.getElementById("username").innerHTML);
+	}
 
 	// Clear the inputs when the user enters the page
 	if (pageNumber === loginPage) {
