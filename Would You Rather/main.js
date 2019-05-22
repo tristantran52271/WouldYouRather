@@ -28,9 +28,9 @@ function createAccount() {
 	// Checks if the user is connected to the internet, if not, exit the function
 	let isOnline = window.navigator.onLine;
 	if (isOnline) {
-		console.log("online");
+		//console.log("online");
 	} else {
-		console.log("No internet connection");
+		//console.log("No internet connection");
 		createAccountErrorText.innerHTML = "No internet connection";
 		return;
 	}
@@ -74,9 +74,9 @@ function login() {
 	// Checks if the user is connected to the internet, if not, exit the function
 	let isOnline = window.navigator.onLine;
 	if (isOnline) {
-		console.log("online");
+		//console.log("online");
 	} else {
-		console.log("No internet connection");
+		//console.log("No internet connection");
 		loginErrorText.innerHTML = "No internet connection";
 		return;
 	}
@@ -86,11 +86,10 @@ function login() {
 		// If the inputted username/password matches with a username/password on firebase 
 		if ((userArray[i][0] === loginUsernameInput) && (userArray[i][1] === loginPasswordInput)) {
 			// Login
-			console.log("LOGIN!");
+			//console.log("LOGIN!");
 			isLoggedIn = true;
 			loggedUsername = userArray[i][0];
 			goToPage(menuPage);
-			console.log(isLoggedIn + ", logged in as " + loggedUsername);
 			document.getElementById("menuUsername").innerHTML = loggedUsername;
 			break;
 		} else if (i === userArray.length) {
@@ -108,18 +107,13 @@ function goToLoggedInMenu() {
 		alert("Please Log In");
 		return;
 	}
+	document.getElementById("username").innerHTML = loggedUsername;
 	goToPage(loggedInMenuPage);
 }
 
 function goToPage(pageNumber) {
 	// hides all pages with a class of 'pages'
 	document.querySelectorAll('.pages').forEach((e) => e.hidden = true);
-
-	if (pageNumber === loggedInMenuPage) {
-		console.log(document.getElementById("username").innerHTML);
-		document.getElementById("username").innerHTML = loggedUsername;
-		console.log(document.getElementById("username").innerHTML);
-	}
 
 	// Clear the inputs when the user enters the page
 	if (pageNumber === loginPage) {

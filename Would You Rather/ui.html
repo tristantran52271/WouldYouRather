@@ -94,12 +94,12 @@
 			<div class="centered">
 				<button onclick="goToPage(answerQuestionsPage)">Answer Questions</button>
 				<button onclick="">Statistics</button>
-				<button onclick="">Create</button>
+				<button onclick="goToPage(createQuestionsPage)">Create</button>
 			</div>
 		</div>
 	</div>
 
-	<!--ANSWER QUESTIONS PAGE PAGE-->
+	<!--ANSWER QUESTIONS PAGE-->
 	<div class="pages" id="answerQuestionsPage">
 		<div>
 			<h2>Would You Rather...</h2>
@@ -109,12 +109,33 @@
 				<button id="option2">Option 2</button>
 			</div>
 			<div class="navigation">
-				<button id="back">Back</button>
+				<button onclick="goToLoggedInMenu()" id="back">Back</button>
 				<h6></h6>
 				<button id="next">Next</button>
 			</div>
 		</div>
 	</div>
+
+	<!--CREATE QUESTIONS PAGE-->
+	<div class="pages" id="createQuestionsPage">
+		<div>
+			<h2>Create Question</h2>
+			<div class="inputs">
+				<h5>Title</h5>
+				<textarea name="titleInput" id="titleInput" rows="1"></textarea>
+				<h5>Option 1</h5>
+				<textarea name="option1Input" id="option1Input" rows="3"></textarea>
+				<h5>Option 2</h5>
+				<textarea name="option2Input" id="option2Input" rows="3"></textarea>
+			</div>
+			<div class="navigation">
+				<button onclick="goToLoggedInMenu()" id="back">Back</button>
+				<h6></h6>
+				<button id="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>

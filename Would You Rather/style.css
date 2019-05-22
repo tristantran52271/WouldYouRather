@@ -114,7 +114,11 @@ h1{
 	align-content: center;
 }
 
-
+/*
+===========
+			ANSWER QUESTIONS
+===========
+*/
 #answerQuestionsPage h2{
 	text-align: center;
 	font-size: 5.5vw;
@@ -136,6 +140,7 @@ h1{
 	height: 19vw;
 	width: 32vw;
 	font-size: 3.5vw;
+	color: rgb(55, 63, 81);
 }
 
 .options #option1{
@@ -173,4 +178,75 @@ h1{
 
 .navigation #next{
 	right: 0%;
+}
+
+/*
+===========
+			CREATE QUESTIONS
+===========
+*/
+
+#createQuestionsPage{
+	margin-left: 20vw;
+}
+
+#createQuestionsPage h2{
+	text-align: left;
+	font-size: 5.5vw;
+	margin-top: 20px;
+	margin-bottom: 0vw;
+	padding-bottom: 0vw;
+}
+
+
+#createQuestionsPage h5{
+	text-align: left;
+	font-size: 3.5vw;
+	margin-top: 1vw;
+	margin-bottom: 0vw;
+}
+
+#createQuestionsPage textarea{
+	margin-top: 1vw;
+	margin-bottom: 0vw;
+	font-size: 2vw;
+
+	width: 55vw; 
+
+	color: rgb(55, 63, 81);
+	resize: none;
+}
+
+#createQuestionsPage #option1Input{
+	height: 8vw;
+}
+
+#createQuestionsPage #option2Input{
+	height: 8vw;
+}
+
+#createQuestionsPage .navigation{
+	margin-top:1vw;
+}
+
+#createQuestionsPage .navigation button{
+	height: 5vw;
+	width: 13vw;
+	font-size: 3.5vw;
+	color: rgb(55, 63, 81);
+}
+
+#createQuestionsPage .navigation #back{
+	background-color: rgb(245, 100, 118);
+	box-shadow: 0.5vw 0.5vw rgb(228, 63, 111);
+}
+
+#createQuestionsPage .navigation #submit{
+	background-color: rgb(0, 122, 237);
+	box-shadow: 0.5vw 0.5vw rgb(0, 101, 196);
+}
+
+#createQuestionsPage .navigation h6{
+	display: inline;
+	margin-right: 29vw;
 }
