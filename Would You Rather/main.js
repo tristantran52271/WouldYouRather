@@ -6,6 +6,10 @@ let userArrayRef = database.ref('/userArray');
 
 userArrayRef.once('value').then(reload);
 
+let questionArray = [];
+let questionArrayRef = database.ref('/questionArray');
+questionArrayRef.once('value').then(reloadQuestions);
+
 var isLoggedIn = false;
 let loggedUsername = "";
 
@@ -17,6 +21,20 @@ function reload(data) {
 
 	userArrayRef.update(userArray);
 	console.log(data.val());
+}
+
+function reloadQuestions(data) {
+	//If there is no data in the online databse, it creates an array
+	if (questionArray == null) questionArray = [];
+	//Adding the incoming data into a object
+	questionArray = data.val();
+
+	//questionArray = [["User", ["Title", [["Content"], ["ChosenAmount"]], [["Content"], ["ChosenAmount"]]]]];
+	//questionArrayRef.update(questionArray);
+
+	questionArrayRef.update(questionArray);
+	console.log(data.val());
+	console.log(questionArray[0][1][1][1][0]);
 }
 
 function createAccount() {
@@ -59,9 +77,11 @@ function createAccount() {
 		}
 	}
 
+	// Update the array
 	userArray.push([createAccountUsernameInput, createAcconutPasswordInput]);
 	userArrayRef.update(userArray);
 
+	// Send the user to the menu page
 	goToPage(menuPage);
 }
 
@@ -129,6 +149,32 @@ function goToPage(pageNumber) {
 		document.getElementById("createAccountPasswordInput").value = "";
 	}
 
+	if (pageNumber === createQuestionsPage) {
+		document.getElementById("titleInput").value = "";
+		document.getElementById("option1Input").value = "";
+		document.getElementById("option2Input").value = "";
+	}
+
 	// reveals required page
 	pageNumber.hidden = false;
+}
+
+function CreateQuestion() {
+	let user = loggedUsername;
+	let title = document.getElementById("titleInput").value;
+	let option1 = document.getElementById("option1Input").value;
+	let option2 = document.getElementById("option2Input").value;
+
+	if (title === "" || option1 === "" || option2 === "") {
+		console.log("Please fill out all fields");
+		return;
+	}
+
+	//console.log(user + ", submitted: " + title + " with the answers " + option1 + " and " + option2);
+	questionArray = [[user, [title, [[option1], [0]], [[option2], [0]]]]];
+
+	questionArray.push();
+	questionArrayRef.update(questionArray);
+
+	goToPage(loggedInMenuPage);
 }
