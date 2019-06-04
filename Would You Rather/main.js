@@ -34,7 +34,7 @@ function reloadQuestions(data) {
 
 	questionArrayRef.update(questionArray);
 	console.log(data.val());
-	console.log(questionArray[0][1][1][1][0]);
+	console.log(questionArray[0][1][1][0][0]);
 }
 
 function createAccount() {
@@ -155,6 +155,10 @@ function goToPage(pageNumber) {
 		document.getElementById("option2Input").value = "";
 	}
 
+	if (pageNumber === answerQuestionsPage) {
+		AnswerQuestions();
+	}
+
 	// reveals required page
 	pageNumber.hidden = false;
 }
@@ -171,10 +175,24 @@ function CreateQuestion() {
 	}
 
 	//console.log(user + ", submitted: " + title + " with the answers " + option1 + " and " + option2);
-	questionArray = [[user, [title, [[option1], [0]], [[option2], [0]]]]];
+	//questionArray = [[user, [title, [[option1], [0]], [[option2], [0]]]]];
 
-	questionArray.push();
+	questionArray.push([user, [title, [[option1], [0]], [[option2], [0]]]]);
 	questionArrayRef.update(questionArray);
 
 	goToPage(loggedInMenuPage);
+}
+
+function AnswerQuestions() {
+	let option1 = document.getElementById("option1").innerHTML;
+	let option2 = document.getElementById("option2").innerHTML;
+
+	let chosenUser = Math.floor(Math.random() * questionArray.length);
+	//let chosenQuestion = questionArray[chosenUser][Math.floor(Math.random() * questionArray[chosenUser].length)];
+	option1 = questionArray[chosenUser][1][1][0][0];
+	option2 = questionArray[chosenUser][1][2][0][0];
+
+	document.getElementById("option1").innerHTML = option1;
+	document.getElementById("option2").innerHTML = option2;
+
 }
