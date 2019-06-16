@@ -134,9 +134,16 @@ h1{
 
 #answerQuestionsPage .options{
 	text-align: center;
+	vertical-align: 0;
+}
+
+#answerQuestionsPage .options p{
+	text-align: center;
+	display: inline-block;
 }
 
 #answerQuestionsPage .options button{
+	text-align: center;
 	height: 19vw;
 	width: 32vw;
 	font-size: 3.5vw;

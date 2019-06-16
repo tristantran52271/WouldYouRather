@@ -13,6 +13,8 @@ questionArrayRef.once('value').then(reloadQuestions);
 var isLoggedIn = false;
 let loggedUsername = "";
 
+let chosenUser = 0;
+
 function reload(data) {
 	//If there is no data in the online databse, it creates an array
 	if (userArray == null) userArray = [];
@@ -109,7 +111,7 @@ function login() {
 			//console.log("LOGIN!");
 			isLoggedIn = true;
 			loggedUsername = userArray[i][0];
-			goToPage(menuPage);
+			goToPage(loggedInMenuPage);
 			document.getElementById("menuUsername").innerHTML = loggedUsername;
 			break;
 		} else if (i === userArray.length) {
@@ -184,15 +186,39 @@ function CreateQuestion() {
 }
 
 function AnswerQuestions() {
+	NewQuestion();
+}
+
+function Option1() {
+	let chosenAmount;
+	chosenAmount = parseInt(questionArray[chosenUser][1][1][1][0]) + 1;
+
+	questionArray[chosenUser][1][1][1][0] = chosenAmount;
+	questionArrayRef.update(questionArray);
+
+	// Change the value within the button to display the percentage and the total amount chosen
+
+}
+
+function Option2() {
+	let chosenAmount;
+	chosenAmount = parseInt(questionArray[chosenUser][1][2][1][0]) + 1;
+
+	questionArray[chosenUser][1][2][1][0] = chosenAmount;
+	questionArrayRef.update(questionArray);
+
+	// Change the value within the button to display the percentage and the total amount chosen
+
+}
+
+function NewQuestion() {
 	let option1 = document.getElementById("option1").innerHTML;
 	let option2 = document.getElementById("option2").innerHTML;
 
-	let chosenUser = Math.floor(Math.random() * questionArray.length);
-	//let chosenQuestion = questionArray[chosenUser][Math.floor(Math.random() * questionArray[chosenUser].length)];
+	chosenUser = Math.floor(Math.random() * questionArray.length);
 	option1 = questionArray[chosenUser][1][1][0][0];
 	option2 = questionArray[chosenUser][1][2][0][0];
 
 	document.getElementById("option1").innerHTML = option1;
 	document.getElementById("option2").innerHTML = option2;
-
 }
