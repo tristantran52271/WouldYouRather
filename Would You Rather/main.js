@@ -34,8 +34,14 @@ function reloadQuestions(data) {
 	//questionArray = [["User", ["Title", [["Content"], ["ChosenAmount"]], [["Content"], ["ChosenAmount"]]]]];
 	//questionArrayRef.update(questionArray);
 
+	for (i = 0; i < questionArray.length; i++) {
+		if (typeof questionArray[i] == 'undefined') {
+			questionArray.splice(i, 1);
+		}
+	}
+
 	questionArrayRef.update(questionArray);
-	console.log(data.val());
+	console.log(questionArray);
 	console.log(questionArray[0][1][1][0][0]);
 }
 
@@ -194,9 +200,14 @@ function Option1() {
 	chosenAmount = parseInt(questionArray[chosenUser][1][1][1][0]) + 1;
 
 	questionArray[chosenUser][1][1][1][0] = chosenAmount;
+	//console.log(chosenAmount);
 	questionArrayRef.update(questionArray);
 
 	// Change the value within the button to display the percentage and the total amount chosen
+	let option1 = document.getElementById("option1").innerHTML;
+	let chosenTotal = chosenAmount + questionArray[chosenUser][1][2][1][0];
+	let percentage = Math.round((chosenAmount / chosenTotal) * 100);
+	console.log(percentage);
 
 }
 
@@ -208,6 +219,10 @@ function Option2() {
 	questionArrayRef.update(questionArray);
 
 	// Change the value within the button to display the percentage and the total amount chosen
+	let option2 = document.getElementById("option2").innerHTML;
+	let chosenTotal = chosenAmount + questionArray[chosenUser][1][1][1][0];
+	let percentage = Math.round((chosenAmount / chosenTotal) * 100);
+	console.log(percentage);
 
 }
 
