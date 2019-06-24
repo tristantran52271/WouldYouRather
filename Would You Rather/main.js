@@ -200,15 +200,9 @@ function Option1() {
 	chosenAmount = parseInt(questionArray[chosenUser][1][1][1][0]) + 1;
 
 	questionArray[chosenUser][1][1][1][0] = chosenAmount;
-	//console.log(chosenAmount);
 	questionArrayRef.update(questionArray);
 
-	// Change the value within the button to display the percentage and the total amount chosen
-	let option1 = document.getElementById("option1").innerHTML;
-	let chosenTotal = chosenAmount + questionArray[chosenUser][1][2][1][0];
-	let percentage = Math.round((chosenAmount / chosenTotal) * 100);
-	console.log(percentage);
-
+	DisplayResults(true);
 }
 
 function Option2() {
@@ -218,12 +212,37 @@ function Option2() {
 	questionArray[chosenUser][1][2][1][0] = chosenAmount;
 	questionArrayRef.update(questionArray);
 
-	// Change the value within the button to display the percentage and the total amount chosen
-	let option2 = document.getElementById("option2").innerHTML;
-	let chosenTotal = chosenAmount + questionArray[chosenUser][1][1][1][0];
-	let percentage = Math.round((chosenAmount / chosenTotal) * 100);
-	console.log(percentage);
+	DisplayResults(false);
+}
 
+function DisplayResults(choseOption1) {
+	option1Amount = parseInt(questionArray[chosenUser][1][1][1][0]);
+	option2Amount = parseInt(questionArray[chosenUser][1][2][1][0]);
+
+	// Change the value within the buttons to display the percentage and the total amount chosen
+	let option1 = document.getElementById("option1").innerHTML;
+	let option2 = document.getElementById("option2").innerHTML;
+
+	let chosenTotal = option1Amount + option2Amount;
+
+	let option1percentage = Math.round((option1Amount / chosenTotal) * 100);
+	option1 = option1percentage + "%" + "<br>" + option1Amount;
+	console.log("Option 1: " + option1percentage + "%" + " (" + option1Amount + ")");
+
+	let option2percentage = Math.round((option2Amount / chosenTotal) * 100);
+	option2 = option2percentage + "%" + "<br>" + option2Amount;
+	console.log("Option 2: " + option2percentage + "%" + " (" + option2Amount + ")");
+
+	if (choseOption1) {
+		option1 = option1 + " agrees";
+		option2 = option2 + " disagrees";
+	} else {
+		option1 = option1 + " disagrees";
+		option2 = option2 + " agrees";
+	}
+
+	document.getElementById("option1").innerHTML = option1;
+	document.getElementById("option2").innerHTML = option2;
 }
 
 function NewQuestion() {
