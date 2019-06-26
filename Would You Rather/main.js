@@ -15,6 +15,8 @@ let loggedUsername = "";
 
 let chosenUser = 0;
 
+let hasChosen = false;
+
 function reload(data) {
 	//If there is no data in the online databse, it creates an array
 	if (userArray == null) userArray = [];
@@ -196,6 +198,10 @@ function AnswerQuestions() {
 }
 
 function Option1() {
+	if (hasChosen) {
+		return;
+	}
+
 	let chosenAmount;
 	chosenAmount = parseInt(questionArray[chosenUser][1][1][1][0]) + 1;
 
@@ -206,6 +212,10 @@ function Option1() {
 }
 
 function Option2() {
+	if (hasChosen) {
+		return;
+	}
+
 	let chosenAmount;
 	chosenAmount = parseInt(questionArray[chosenUser][1][2][1][0]) + 1;
 
@@ -216,6 +226,8 @@ function Option2() {
 }
 
 function DisplayResults(choseOption1) {
+	hasChosen = true;
+
 	option1Amount = parseInt(questionArray[chosenUser][1][1][1][0]);
 	option2Amount = parseInt(questionArray[chosenUser][1][2][1][0]);
 
@@ -246,10 +258,18 @@ function DisplayResults(choseOption1) {
 }
 
 function NewQuestion() {
+	hasChosen = false;
+
 	let option1 = document.getElementById("option1").innerHTML;
 	let option2 = document.getElementById("option2").innerHTML;
 
-	chosenUser = Math.floor(Math.random() * questionArray.length);
+	let newChosenUser = Math.floor(Math.random() * questionArray.length);
+
+	while (newChosenUser === chosenUser) {
+		newChosenUser = Math.floor(Math.random() * questionArray.length);
+	}
+	chosenUser = newChosenUser;
+
 	option1 = questionArray[chosenUser][1][1][0][0];
 	option2 = questionArray[chosenUser][1][2][0][0];
 
