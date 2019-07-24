@@ -189,6 +189,75 @@ h1{
 
 /*
 ===========
+			STATISTICS
+===========
+*/
+#statisticsPage{
+	margin-left: 20vw;
+}
+
+#statisticsPage h2{
+	text-align: left;
+	font-size: 5.5vw;
+	margin-top: 20px;
+	margin-bottom: 0vw;
+	padding-bottom: 0vw;
+}
+
+#statisticsPage table,tr,th{
+	border: 1px solid white;
+	border-collapse: collapse;
+
+	text-align: center;
+	font-size: 3.5vw;
+	color: rgb(55, 63, 81);
+
+	padding-left: 8vw;
+	padding-right: 8vw;
+}
+
+#statisticsPage table thead, tbody{
+	display: block;
+}
+
+#statisticsPage table, tbody{
+	
+	height: 40vw;
+    overflow-y: auto;    /* Trigger vertical scroll    */
+	overflow-x: hidden;  /* Hide the horizontal scroll */
+}
+
+#statisticsPage table,tr,td{
+	border: 1px solid white;
+	border-collapse: collapse;
+
+	text-align: left;
+	height:5vw;
+	width:30vw;
+	font-size: 3vw;
+	color: white;
+
+	padding-left: 1vw;
+}
+
+#statisticsPage .navigation{
+	margin-top:1vw;
+}
+
+#statisticsPage .navigation button{
+	height: 5vw;
+	width: 13vw;
+	font-size: 3.5vw;
+	color: rgb(55, 63, 81);
+}
+
+#statisticsPage .navigation #back{
+	background-color: rgb(245, 100, 118);
+	box-shadow: 0.5vw 0.5vw rgb(228, 63, 111);
+}
+
+/*
+===========
 			CREATE QUESTIONS
 ===========
 */

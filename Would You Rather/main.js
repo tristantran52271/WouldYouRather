@@ -137,7 +137,7 @@ function goToLoggedInMenu() {
 		alert("Please Log In");
 		return;
 	}
-	document.getElementById("username").innerHTML = loggedUsername;
+	document.getElementById("menuUsername").innerHTML = loggedUsername;
 	goToPage(loggedInMenuPage);
 }
 
@@ -167,6 +167,10 @@ function goToPage(pageNumber) {
 
 	if (pageNumber === answerQuestionsPage) {
 		AnswerQuestions();
+	}
+
+	if (pageNumber === statisticsPage) {
+		FillTable();
 	}
 
 	// reveals required page
@@ -228,8 +232,8 @@ function Option2() {
 function DisplayResults(choseOption1) {
 	hasChosen = true;
 
-	option1Amount = parseInt(questionArray[chosenUser][1][1][1][0]);
-	option2Amount = parseInt(questionArray[chosenUser][1][2][1][0]);
+	let option1Amount = parseInt(questionArray[chosenUser][1][1][1][0]);
+	let option2Amount = parseInt(questionArray[chosenUser][1][2][1][0]);
 
 	// Change the value within the buttons to display the percentage and the total amount chosen
 	let option1 = document.getElementById("option1").innerHTML;
@@ -246,11 +250,11 @@ function DisplayResults(choseOption1) {
 	console.log("Option 2: " + option2percentage + "%" + " (" + option2Amount + ")");
 
 	if (choseOption1) {
-		option1 = option1 + " agrees";
+		option1 = option1 + " agree";
 		option2 = option2 + " disagrees";
 	} else {
 		option1 = option1 + " disagrees";
-		option2 = option2 + " agrees";
+		option2 = option2 + " agree";
 	}
 
 	document.getElementById("option1").innerHTML = option1;
@@ -275,4 +279,30 @@ function NewQuestion() {
 
 	document.getElementById("option1").innerHTML = option1;
 	document.getElementById("option2").innerHTML = option2;
+}
+
+function FillTable() {
+	document.getElementById("tbody").innerHTML = '';
+	var testRow = document.getElementById("tbody").insertRow(0);
+
+	for (i = 0; i < questionArray.length; i++) {
+		let statisticsTable = document.getElementById("table");
+		let row = statisticsTable.insertRow(statisticsTable.rows.length);
+		let questionNameCell = row.insertCell(0);
+		let questionResultsCell = row.insertCell(1);
+
+		questionNameCell.innerHTML = questionArray[i][1][0];
+
+		option1Amount = parseInt(questionArray[i][1][1][1][0]);
+		option2Amount = parseInt(questionArray[i][1][2][1][0]);
+
+		let chosenTotal = option1Amount + option2Amount;
+
+		let option1percentage = Math.round((option1Amount / chosenTotal) * 100);
+		let option2percentage = Math.round((option2Amount / chosenTotal) * 100);
+
+		questionResultsCell.innerHTML =
+			"<font color='#007aed'>" + option1percentage + "%</font> | " +
+			"<font color='#f56476'>" + option2percentage + "%</font>";
+	}
 }

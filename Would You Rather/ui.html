@@ -4,6 +4,8 @@
 <head>
 	<title>Would You Rather</title>
 	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+		integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 </head>
 
 <body>
@@ -14,7 +16,7 @@
 			<div class="centered">
 				<h1>Would You Rather?</h1>
 				<h6>User: </h6>
-				<p id="menuUsername">Currently not logged in</p>
+				<p>Currently not logged in</p>
 			</div>
 		</div>
 		<div class="split right">
@@ -86,14 +88,14 @@
 			<div class="centered">
 				<h1>Would You Rather?</h1>
 				<h6>User: </h6>
-				<p id="username">Testuser</p>
+				<p id="menuUsername">Testuser</p>
 			</div>
 		</div>
 		<div class="split right">
 			<!--CONENT IN LEFT COLUMN-->
 			<div class="centered">
 				<button onclick="goToPage(answerQuestionsPage)">Answer Questions</button>
-				<button onclick="">Statistics</button>
+				<button onclick="goToPage(statisticsPage)">Statistics</button>
 				<button onclick="goToPage(createQuestionsPage)">Create</button>
 			</div>
 		</div>
@@ -116,17 +118,44 @@
 		</div>
 	</div>
 
+	<!--STATISTICS PAGE-->
+	<div class="pages" id="statisticsPage">
+		<div>
+			<h2>Statistics</h2>
+			<div class="table">
+				<table id="table">
+					<thead>
+						<tr>
+							<th bgcolor="#FFFFFF">Question <button><i class="fas fa-caret-down"></i></button></th>
+							<th bgcolor="#FFFFFF">Results <button><i class="fas fa-caret-down"></i></button></th>
+						</tr>
+					</thead>
+					<tbody id="tbody">
+						<tr>
+							<td>Dogs vs Cats</td>
+							<td>50% 50%</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="navigation">
+				<button onclick="goToLoggedInMenu()" id="back">Back</button>
+			</div>
+		</div>
+	</div>
+
+
 	<!--CREATE QUESTIONS PAGE-->
 	<div class="pages" id="createQuestionsPage">
 		<div>
 			<h2>Create Question</h2>
 			<div class="inputs">
 				<h5>Title</h5>
-				<textarea name="titleInput" id="titleInput" rows="1"></textarea>
+				<textarea name="titleInput" id="titleInput" rows="1" placeholder="Eg. Pet dog or Pet cat"></textarea>
 				<h5>Option 1</h5>
-				<textarea name="option1Input" id="option1Input" rows="3"></textarea>
+				<textarea name="option1Input" id="option1Input" rows="3" placeholder="Eg. Own a pet dog"></textarea>
 				<h5>Option 2</h5>
-				<textarea name="option2Input" id="option2Input" rows="3"></textarea>
+				<textarea name="option2Input" id="option2Input" rows="3" placeholder="Eg. Own a pet cat"></textarea>
 			</div>
 			<div class="navigation">
 				<button onclick="goToLoggedInMenu()" id="back">Back</button>
@@ -135,7 +164,6 @@
 			</div>
 		</div>
 	</div>
-
 
 	<!-- The core Firebase JS SDK is always required and must be listed first -->
 	<script src="https://www.gstatic.com/firebasejs/6.0.1/firebase-app.js"></script>
