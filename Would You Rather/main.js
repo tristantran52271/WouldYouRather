@@ -170,7 +170,7 @@ function goToPage(pageNumber) {
 	}
 
 	if (pageNumber === statisticsPage) {
-		FillTable();
+		FillTable(questionArray);
 	}
 
 	// reveals required page
@@ -187,9 +187,6 @@ function CreateQuestion() {
 		console.log("Please fill out all fields");
 		return;
 	}
-
-	//console.log(user + ", submitted: " + title + " with the answers " + option1 + " and " + option2);
-	//questionArray = [[user, [title, [[option1], [0]], [[option2], [0]]]]];
 
 	questionArray.push([user, [title, [[option1], [0]], [[option2], [0]]]]);
 	questionArrayRef.update(questionArray);
@@ -281,20 +278,20 @@ function NewQuestion() {
 	document.getElementById("option2").innerHTML = option2;
 }
 
-function FillTable() {
+function FillTable(content) {
 	document.getElementById("tbody").innerHTML = '';
 	var testRow = document.getElementById("tbody").insertRow(0);
 
-	for (i = 0; i < questionArray.length; i++) {
+	for (i = 0; i < content.length; i++) {
 		let statisticsTable = document.getElementById("table");
 		let row = statisticsTable.insertRow(statisticsTable.rows.length);
 		let questionNameCell = row.insertCell(0);
 		let questionResultsCell = row.insertCell(1);
 
-		questionNameCell.innerHTML = questionArray[i][1][0];
+		questionNameCell.innerHTML = content[i][1][0];
 
-		option1Amount = parseInt(questionArray[i][1][1][1][0]);
-		option2Amount = parseInt(questionArray[i][1][2][1][0]);
+		option1Amount = parseInt(content[i][1][1][1][0]);
+		option2Amount = parseInt(content[i][1][2][1][0]);
 
 		let chosenTotal = option1Amount + option2Amount;
 
@@ -306,3 +303,34 @@ function FillTable() {
 			"<font color='#f56476'>" + option2percentage + "%</font>";
 	}
 }
+
+function SortQuestionArray() {
+	let arrayToSort = questionArray;
+	let numberOfQuestions = arrayToSort.length;
+	let currentQuestion = 1;
+
+	while (currentQuestion + 1 <= numberOfQuestions) {
+		let currentQuestionData = arrayToSort[currentQuestion][1][0];
+		let currentQuestionIndex = arrayToSort[currentQuestion];
+		let comparison = 0;
+		let finish = false;
+
+		while (comparison < currentQuestion && finish === false) {
+			if (currentQuestionData < arrayToSort[comparison][1][0]) {
+				let shuffleQuesiton = currentQuestion;
+
+				while (shuffleQuesiton > comparison) {
+					arrayToSort[shuffleQuesiton] = arrayToSort[shuffleQuesiton - 1];
+					shuffleQuesiton--;
+				}
+				arrayToSort[comparison] = currentQuestionIndex;
+				finish = true;
+			}
+			comparison++;
+		}
+		currentQuestion++;
+	}
+	FillTable(arrayToSort);
+}
+
+

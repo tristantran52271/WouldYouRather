@@ -216,13 +216,21 @@ h1{
 	padding-right: 8vw;
 }
 
+#statisticsPage thead tr th button{
+	padding-top:0px;
+	margin-top:0px;
+	font-size: 2vw;
+	height: 2.5vw;
+	width: 3.5vw;
+}
+
 #statisticsPage table thead, tbody{
 	display: block;
 }
 
 #statisticsPage table, tbody{
 	
-	height: 40vw;
+	height: 26vw;
     overflow-y: auto;    /* Trigger vertical scroll    */
 	overflow-x: hidden;  /* Hide the horizontal scroll */
 }
@@ -232,9 +240,9 @@ h1{
 	border-collapse: collapse;
 
 	text-align: left;
-	height:5vw;
+	height:3.3vw;
 	width:30vw;
-	font-size: 3vw;
+	font-size: 2.7vw;
 	color: white;
 
 	padding-left: 1vw;
