@@ -204,12 +204,32 @@ h1{
 	padding-bottom: 0vw;
 }
 
+#statisticsPage textarea{
+	margin-top:0.25vw;
+	margin-bottom:0.25vw;
+
+	font-size: 2vw;
+	height: 2.6vw;
+	width: 30vw; 
+
+	color: rgb(55, 63, 81);
+	resize: none;
+}
+
+#statisticsPage #searchButton{
+	margin-top: -20px;
+	padding-top: 0px;
+	height: 3.2vw;
+	width: 3.2vw;
+	font-size: 1.5vw;
+}
+
 #statisticsPage table,tr,th{
 	border: 1px solid white;
 	border-collapse: collapse;
 
 	text-align: center;
-	font-size: 3.5vw;
+	font-size: 3vw;
 	color: rgb(55, 63, 81);
 
 	padding-left: 8vw;
@@ -217,11 +237,9 @@ h1{
 }
 
 #statisticsPage thead tr th button{
-	padding-top:0px;
-	margin-top:0px;
 	font-size: 2vw;
-	height: 2.5vw;
-	width: 3.5vw;
+	height: 2.3vw;
+	width: 3vw;
 }
 
 #statisticsPage table thead, tbody{
@@ -230,7 +248,7 @@ h1{
 
 #statisticsPage table, tbody{
 	
-	height: 26vw;
+	height: 24.3vw;
     overflow-y: auto;    /* Trigger vertical scroll    */
 	overflow-x: hidden;  /* Hide the horizontal scroll */
 }
