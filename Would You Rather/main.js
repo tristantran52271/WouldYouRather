@@ -17,6 +17,8 @@ let chosenUser = 0;
 
 let hasChosen = false;
 
+let sortTitleReverse = false;
+
 function reload(data) {
 	//If there is no data in the online databse, it creates an array
 	if (userArray == null) userArray = [];
@@ -303,7 +305,15 @@ function FillTable(content) {
 			"<font color='#f56476'>" + option2percentage + "%</font>";
 	}
 }
-
+function SortQuestionTitle() {
+	if (sortTitleReverse === false) {
+		SortQuestionArray();
+		sortTitleReverse = true;
+	} else {
+		SortQuestionArray();
+		sortTitleReverse = false;
+	}
+}
 function SortQuestionArray() {
 	let arrayToSort = questionArray;
 	let numberOfQuestions = arrayToSort.length;
@@ -333,4 +343,92 @@ function SortQuestionArray() {
 	FillTable(arrayToSort);
 }
 
+function SortQuestionArrayForSearch() {
+	let arrayToSort = questionArray;
+	let numberOfQuestions = arrayToSort.length;
+	let currentQuestion = 1;
 
+	while (currentQuestion + 1 <= numberOfQuestions) {
+		let currentQuestionData = arrayToSort[currentQuestion][1][0];
+		let currentQuestionIndex = arrayToSort[currentQuestion];
+		let comparison = 0;
+		let finish = false;
+
+		while (comparison < currentQuestion && finish === false) {
+			if (currentQuestionData < arrayToSort[comparison][1][0]) {
+				let shuffleQuesiton = currentQuestion;
+
+				while (shuffleQuesiton > comparison) {
+					arrayToSort[shuffleQuesiton] = arrayToSort[shuffleQuesiton - 1];
+					shuffleQuesiton--;
+				}
+				arrayToSort[comparison] = currentQuestionIndex;
+				finish = true;
+			}
+			comparison++;
+		}
+		currentQuestion++;
+	}
+	return arrayToSort;
+}
+
+function Search() {
+	let search = document.getElementById("searchInput").value;
+	if (search === "") {
+		console.log("Empty search field");
+		return;
+	}
+
+	BinarySearch(SortQuestionArrayForSearch(), search);
+}
+
+function BinarySearch(array, search) {
+	let arrayToSearch = array;
+	let low = 0;
+	let high = array.length;
+	let found = false;
+	let itemToFind = search.toLowerCase();
+
+	//let middle;
+
+	while (high >= low && found === false) {
+		let middle = parseInt((low + high) / 2);
+		console.log(middle);
+		if (middle === arrayToSearch.length) {
+			break;
+		}
+
+		if (FoundItem(arrayToSearch, middle, itemToFind)) {
+			found = true;
+			break;
+		}
+
+		if (itemToFind < (arrayToSearch[middle][1][0]).toLowerCase()) {
+			console.log("lower");
+			high = middle - 1;
+		} else {
+			console.log("higer");
+			low = middle + 1;
+		}
+	}
+	if (found === true) {
+		//console.log("Found: " + itemToFind + " in " + arrayToSearch[middle][1][0].toLowerCase());
+	} else {
+		console.log("Not Found: " + itemToFind);
+	}
+}
+
+function FoundItem(array, index, itemToFind) {
+	console.log(array[index][1][0] + " " + index + " " + itemToFind);
+
+	let itemInArray = array[index][1][0].toLowerCase();
+
+	//console.log(itemInArray + " " + itemToFind);
+
+	if (itemInArray.includes(itemToFind)) {
+		console.log("Found: " + itemToFind + " in " + itemInArray);
+		return true;
+	}
+
+	return false;
+}
