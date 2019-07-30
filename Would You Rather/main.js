@@ -389,11 +389,9 @@ function BinarySearch(array, search) {
 	let found = false;
 	let itemToFind = search.toLowerCase();
 
-	//let middle;
-
 	while (high >= low && found === false) {
 		let middle = parseInt((low + high) / 2);
-		console.log(middle);
+
 		if (middle === arrayToSearch.length) {
 			break;
 		}
@@ -404,31 +402,25 @@ function BinarySearch(array, search) {
 		}
 
 		if (itemToFind < (arrayToSearch[middle][1][0]).toLowerCase()) {
-			console.log("lower");
 			high = middle - 1;
 		} else {
-			console.log("higer");
 			low = middle + 1;
 		}
 	}
+
 	if (found === true) {
-		//console.log("Found: " + itemToFind + " in " + arrayToSearch[middle][1][0].toLowerCase());
+
 	} else {
 		console.log("Not Found: " + itemToFind);
 	}
 }
 
 function FoundItem(array, index, itemToFind) {
-	console.log(array[index][1][0] + " " + index + " " + itemToFind);
-
 	let itemInArray = array[index][1][0].toLowerCase();
-
-	//console.log(itemInArray + " " + itemToFind);
 
 	if (itemInArray.includes(itemToFind)) {
 		console.log("Found: " + itemToFind + " in " + itemInArray);
 		return true;
 	}
-
 	return false;
 }
