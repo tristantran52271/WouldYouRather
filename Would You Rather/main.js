@@ -19,6 +19,9 @@ let hasChosen = false;
 
 let sortTitleReverse = false;
 
+let searchArray;
+let searchedItemsArray;
+
 function reload(data) {
 	//If there is no data in the online databse, it creates an array
 	if (userArray == null) userArray = [];
@@ -26,7 +29,6 @@ function reload(data) {
 	userArray = data.val();
 
 	userArrayRef.update(userArray);
-	console.log(data.val());
 }
 
 function reloadQuestions(data) {
@@ -35,9 +37,6 @@ function reloadQuestions(data) {
 	//Adding the incoming data into a object
 	questionArray = data.val();
 
-	//questionArray = [["User", ["Title", [["Content"], ["ChosenAmount"]], [["Content"], ["ChosenAmount"]]]]];
-	//questionArrayRef.update(questionArray);
-
 	for (i = 0; i < questionArray.length; i++) {
 		if (typeof questionArray[i] == 'undefined') {
 			questionArray.splice(i, 1);
@@ -45,8 +44,6 @@ function reloadQuestions(data) {
 	}
 
 	questionArrayRef.update(questionArray);
-	console.log(questionArray);
-	console.log(questionArray[0][1][1][0][0]);
 }
 
 function createAccount() {
@@ -118,7 +115,6 @@ function login() {
 		// If the inputted username/password matches with a username/password on firebase 
 		if ((userArray[i][0] === loginUsernameInput) && (userArray[i][1] === loginPasswordInput)) {
 			// Login
-			//console.log("LOGIN!");
 			isLoggedIn = true;
 			loggedUsername = userArray[i][0];
 			goToPage(loggedInMenuPage);
@@ -242,11 +238,9 @@ function DisplayResults(choseOption1) {
 
 	let option1percentage = Math.round((option1Amount / chosenTotal) * 100);
 	option1 = option1percentage + "%" + "<br>" + option1Amount;
-	console.log("Option 1: " + option1percentage + "%" + " (" + option1Amount + ")");
 
 	let option2percentage = Math.round((option2Amount / chosenTotal) * 100);
 	option2 = option2percentage + "%" + "<br>" + option2Amount;
-	console.log("Option 2: " + option2percentage + "%" + " (" + option2Amount + ")");
 
 	if (choseOption1) {
 		option1 = option1 + " agree";
@@ -343,8 +337,8 @@ function SortQuestionArray() {
 	FillTable(arrayToSort);
 }
 
-function SortQuestionArrayForSearch() {
-	let arrayToSort = questionArray;
+function SortQuestionArrayForSearch(array) {
+	let arrayToSort = array;
 	let numberOfQuestions = arrayToSort.length;
 	let currentQuestion = 1;
 
@@ -372,14 +366,24 @@ function SortQuestionArrayForSearch() {
 	return arrayToSort;
 }
 
-function Search() {
+function SearchAll(firstSearch) {
+	if (firstSearch === true) {
+		questionArrayRef.once('value').then(reloadQuestions);
+		searchArray = questionArray;
+		searchedItemsArray = [];
+	}
+
+	Search(searchArray);
+}
+
+function Search(array) {
 	let search = document.getElementById("searchInput").value;
 	if (search === "") {
 		console.log("Empty search field");
 		return;
 	}
 
-	BinarySearch(SortQuestionArrayForSearch(), search);
+	BinarySearch(SortQuestionArrayForSearch(array), search);
 }
 
 function BinarySearch(array, search) {
@@ -419,7 +423,12 @@ function FoundItem(array, index, itemToFind) {
 	let itemInArray = array[index][1][0].toLowerCase();
 
 	if (itemInArray.includes(itemToFind)) {
-		console.log("Found: " + itemToFind + " in " + itemInArray);
+		searchedItemsArray.push(array[index]);
+
+		searchArray.splice(index, 1);
+		FillTable(searchedItemsArray);
+		SearchAll(false);
+
 		return true;
 	}
 	return false;
