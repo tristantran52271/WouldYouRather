@@ -132,7 +132,9 @@
 						<tr>
 							<th bgcolor="#FFFFFF">Question<button onclick="SortQuestionTitle()"><i
 										class="fas fa-caret-down"></i></button></th>
-							<th bgcolor="#FFFFFF">Results<button><i class="fas fa-caret-down"></i></button></th>
+							<th bgcolor="#FFFFFF">Results
+								<!--<button><i class="fas fa-caret-down"></i></button>-->
+							</th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
@@ -164,7 +166,7 @@
 			</div>
 			<div class="navigation">
 				<button onclick="goToLoggedInMenu()" id="back">Back</button>
-				<h6></h6>
+				<h6 id="createQuestionsErrorText"></h6>
 				<button onclick="CreateQuestion()" id="submit">Submit</button>
 			</div>
 		</div>

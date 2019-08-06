@@ -182,7 +182,7 @@ function CreateQuestion() {
 	let option2 = document.getElementById("option2Input").value;
 
 	if (title === "" || option1 === "" || option2 === "") {
-		console.log("Please fill out all fields");
+		alert("Please fill out all fields");
 		return;
 	}
 
@@ -256,7 +256,6 @@ function DisplayResults(choseOption1) {
 
 function NewQuestion() {
 	hasChosen = false;
-
 	let option1 = document.getElementById("option1").innerHTML;
 	let option2 = document.getElementById("option2").innerHTML;
 
