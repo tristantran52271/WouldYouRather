@@ -194,6 +194,7 @@ function CreateQuestion() {
 
 function AnswerQuestions() {
 	NewQuestion();
+
 }
 
 function Option1() {
