@@ -535,14 +535,6 @@ function BinarySearch(array, search) {
 			low = middle + 1;
 		}
 	}
-
-	// If we could not find the itemToSearch...
-	if (found === true) {
-
-	} else {
-		// Inform the user that we could not find the desired item
-		alert("Could not find: " + itemToFind);
-	}
 }
 
 // Function that returns true/false whether or not it has found the item
