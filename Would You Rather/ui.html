@@ -126,6 +126,7 @@
 				<textarea name="searchInput" id="searchInput" rows="1" placeholder="Search..."></textarea>
 				<button id="searchButton" onclick="SearchAll(true)"><i class="fas fa-search"></i></button>
 			</div>
+			<!--TABLE-->
 			<div class="table">
 				<table id="table">
 					<thead>
@@ -133,11 +134,14 @@
 							<th bgcolor="#FFFFFF">Question<button onclick="SortQuestionTitle()"><i
 										class="fas fa-caret-down"></i></button></th>
 							<th bgcolor="#FFFFFF">Results
+								<!--Sort Button for results-->
+								<!--UNFINISHED-->
 								<!--<button><i class="fas fa-caret-down"></i></button>-->
 							</th>
 						</tr>
 					</thead>
 					<tbody id="tbody">
+						<!--Test Table values-->
 						<tr>
 							<td>Dogs vs Cats</td>
 							<td>50% 50%</td>
@@ -156,6 +160,7 @@
 	<div class="pages" id="createQuestionsPage">
 		<div>
 			<h2>Create Question</h2>
+			<!--Main Body-->
 			<div class="inputs">
 				<h5>Title</h5>
 				<textarea name="titleInput" id="titleInput" rows="1" placeholder="Eg. Pet dog or Pet cat"></textarea>
@@ -164,6 +169,7 @@
 				<h5>Option 2</h5>
 				<textarea name="option2Input" id="option2Input" rows="3" placeholder="Eg. Own a pet cat"></textarea>
 			</div>
+			<!--Navigation-->
 			<div class="navigation">
 				<button onclick="goToLoggedInMenu()" id="back">Back</button>
 				<h6 id="createQuestionsErrorText"></h6>
